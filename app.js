@@ -9,7 +9,7 @@ function fetchData(url) {
 }
 
 fetchData(
-  "https://newsapi.org/v2/top-headlines?country=us&apiKey=6d3bf7bff5324831a84530cf4ea8f757"
+  "https://newsapi.org/v2/everything?q=technology&apiKey=6d3bf7bff5324831a84530cf4ea8f757"
 ).then(data => generateResults(data.articles));
 
 // ------------------------------------------
@@ -26,18 +26,21 @@ function checkStatus(response) {
 function generateResults(data) {
   for (let i = 0; i < data.length; i++) {
     $("#top-headlines").append(
-      `<li>
-      <h3><a href="${data[i].url}" target="_blank">${data[i].title}</a></h3>
-      <p>${data[i].source.name} | ${data[i].author}</p>
-      <p>${data[i].description}</p>
-      <button id="texttospeech" type="button">Read English to Me!</button> 
-      </li>`
+      `<div>
+        <li>
+            <h3><a href="${data[i].url}" target="_blank">${data[i].title}</a></h3>
+            <p><span>${data[i].source.name}</span></p>
+            <p>${data[i].description}</p>
+            <button id="texttospeech" type="button">Read English to Me!</button> 
+        </li>
+        
+      </div>`
     );
   }
 }
 // ------------------------------------------
 //  EVENT LISTENERS
 // ------------------------------------------
-$(document).on('click', '#texttospeech', function(e) {
-    alert('It worked!');
+$(document).on("click", "#texttospeech", function(e) {
+  alert("It worked!");
 });

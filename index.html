@@ -2,15 +2,24 @@
 <html lang="en">
 
 <head>
+    <title>Read English to Me</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Read English to Me</title>
     <link href="styles.css" rel="stylesheet" type="text/css"/>
 </head>
 
 <body>
-    
+    <div class="form">
+        <form id="article-search">
+            <label for="search-term">Topic:</label>
+
+            <input type="text" name="search-term" id="search-term" aria-placeholder="Technology" placeholder="Technology">
+
+            <input type="submit" value="Search">
+        </form>
+    </div>
+
 
     <script src="app.js"></script>
 </body>

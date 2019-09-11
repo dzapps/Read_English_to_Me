@@ -30,7 +30,7 @@ function generateResults(data) {
       <h3><a href="${data[i].url}" target="_blank">${data[i].title}</a></h3>
       <p>${data[i].source.name} | ${data[i].author}</p>
       <p>${data[i].description}</p>
-      <button type="texttospeech">Read English to Me!</button> 
+      <button id="texttospeech" type="button">Read English to Me!</button> 
       </li>`
     );
   }
@@ -38,3 +38,6 @@ function generateResults(data) {
 // ------------------------------------------
 //  EVENT LISTENERS
 // ------------------------------------------
+$(document).on('click', '#texttospeech', function(e) {
+    alert('It worked!');
+});

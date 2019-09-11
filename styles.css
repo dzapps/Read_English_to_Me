@@ -1,0 +1,20 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Lato', sans-serif;
+  }
+  
+  button, input[type="text"] {
+    padding: 5px;
+  }
+  
+  button:hover {
+    cursor: pointer;
+  }
+  
+  .form {
+    max-width: 600px;
+    margin: 0 auto;
+  }

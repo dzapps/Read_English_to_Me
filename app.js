@@ -1,3 +1,6 @@
+const NEWSAPIKEY = '6d3bf7bff5324831a84530cf4ea8f757';
+const SEARCHURL = 'https://newsapi.org/v2/everything'
+
 // ------------------------------------------
 //  FETCH FUNCTIONS
 // ------------------------------------------
@@ -9,7 +12,7 @@ function fetchData(url) {
 }
 
 fetchData(
-  "https://newsapi.org/v2/everything?q=technology&apiKey=6d3bf7bff5324831a84530cf4ea8f757"
+  `https://newsapi.org/v2/top-headlines?country=us&apiKey=${NEWSAPIKEY}`
 ).then(data => generateResults(data.articles));
 
 // ------------------------------------------
@@ -24,23 +27,54 @@ function checkStatus(response) {
 }
 
 function generateResults(data) {
+    $("#top-headlines").empty();
   for (let i = 0; i < data.length; i++) {
-    $("#top-headlines").append(
+     $("#top-headlines").append(
       `<div>
         <li>
-            <h3><a href="${data[i].url}" target="_blank">${data[i].title}</a></h3>
+            <h3><a href=${data[i].url} target="_blank">${data[i].title}</a></h3>
             <p><span>${data[i].source.name}</span></p>
             <p>${data[i].description}</p>
-            <button id="texttospeech" type="button">Read English to Me!</button> 
+            <button id='text-to-speech' type="button">Read English to Me!</button> 
         </li>
-        
       </div>`
     );
   }
 }
+
+function newSearch(searchTerm = 'technology'){
+    const params ={
+        q: searchTerm,
+        apiKey: NEWSAPIKEY,
+    };
+
+    let queryString = $.param(params);
+    const url = SEARCHURL + "?" + queryString;
+
+    fetchData(url).then(data => generateResults(data.articles));
+}
+
+function formSearch(){
+    $('form').submit(event =>{
+        event.preventDefault();
+        const searchTerm = $("#search-term").val();
+        newSearch(searchTerm);
+    })
+}
+
+
 // ------------------------------------------
 //  EVENT LISTENERS
 // ------------------------------------------
-$(document).on("click", "#texttospeech", function(e) {
-  alert("It worked!");
-});
+// $(document).on("click", "#texttospeech", function(e) {
+//   alert("It worked!");
+// });
+$(document).on("click", '#text-to-speech', function(e) {
+    const url = $(this).closest('li').find('a');
+    let textToSpeechURL = url[0].href;
+    console.log(textToSpeechURL);
+  });
+  
+
+$(formSearch);
+

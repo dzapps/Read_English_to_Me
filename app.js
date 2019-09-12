@@ -1,5 +1,6 @@
 const NEWSAPIKEY = '6d3bf7bff5324831a84530cf4ea8f757';
-const SEARCHURL = 'https://newsapi.org/v2/everything'
+const SEARCHURL = 'https://newsapi.org/v2/everything';
+
 
 // ------------------------------------------
 //  FETCH FUNCTIONS
@@ -14,14 +15,6 @@ function fetchData(url) {
 fetchData(
   `https://newsapi.org/v2/top-headlines?country=us&apiKey=${NEWSAPIKEY}`
 ).then(data => generateResults(data.articles));
-
-// fetchData(
-//     `https://aylien-text.p.rapidapi.com/extract?url=${url}`, {"method": "GET",
-// 	"headers": {
-// 		"x-rapidapi-host": "aylien-text.p.rapidapi.com",
-// 		"x-rapidapi-key": "52e44ec90fmshee9b74a5af92288p13d064jsn25fd189257ac"
-// 	}}
-// )
 
 // ------------------------------------------
 //  HELPER FUNCTIONS
@@ -45,7 +38,7 @@ function generateResults(data) {
             <h3><a href=${data[i].url} target="_blank">${data[i].title}</a></h3>
             <p><span>${data[i].source.name}</span></p>
             <p>${data[i].description}</p>
-            <p id='${newId}' hidden='true'>${content}</p>
+            <p id='${newId}' hidden="true">${content}</p>
            <button onclick="responsiveVoice.speak(document.getElementById('${newId}').textContent);" 
             type="button" value="Play">Read English to Me!</button>
         </li>
@@ -75,29 +68,6 @@ function formSearch(){
     })
     
 }
-
-// function getArticleText(url){
-//     let articleURL = (`https://aylien-text.p.rapidapi.com/extract?url=${url}`, {
-// 	"method": "GET",
-// 	"headers": {
-// 		"x-rapidapi-host": "aylien-text.p.rapidapi.com",
-// 		"x-rapidapi-key": "52e44ec90fmshee9b74a5af92288p13d064jsn25fd189257ac"
-// 	}
-//     })
-
-//     fetchData(articleURL).then(data => console.log("article"));
-// }
-
-
-// ------------------------------------------
-//  EVENT LISTENERS
-// ------------------------------------------
-// $(document).on("click", '#text-to-speech', function(e) {
-//     const url = $(this).closest('li').find('a');
-//     let textToSpeechURL = url[0].href;
-//     console.log(textToSpeechURL);
-//   });
-  
 
 $(formSearch);
 

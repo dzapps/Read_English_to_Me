@@ -15,6 +15,14 @@ fetchData(
   `https://newsapi.org/v2/top-headlines?country=us&apiKey=${NEWSAPIKEY}`
 ).then(data => generateResults(data.articles));
 
+// fetchData(
+//     `https://aylien-text.p.rapidapi.com/extract?url=${url}`, {"method": "GET",
+// 	"headers": {
+// 		"x-rapidapi-host": "aylien-text.p.rapidapi.com",
+// 		"x-rapidapi-key": "52e44ec90fmshee9b74a5af92288p13d064jsn25fd189257ac"
+// 	}}
+// )
+
 // ------------------------------------------
 //  HELPER FUNCTIONS
 // ------------------------------------------
@@ -29,13 +37,17 @@ function checkStatus(response) {
 function generateResults(data) {
     $("#top-headlines").empty();
   for (let i = 0; i < data.length; i++) {
+    let content = [`${data[i].content}`]
+    let newId = 'read-me' + i
      $("#top-headlines").append(
       `<div>
         <li>
             <h3><a href=${data[i].url} target="_blank">${data[i].title}</a></h3>
             <p><span>${data[i].source.name}</span></p>
             <p>${data[i].description}</p>
-            <button id='text-to-speech' type="button">Read English to Me!</button> 
+            <p id='${newId}' hidden='true'>${content}</p>
+           <button onclick="responsiveVoice.speak(document.getElementById('${newId}').textContent);" 
+            type="button" value="Play">Read English to Me!</button>
         </li>
       </div>`
     );
@@ -59,21 +71,32 @@ function formSearch(){
         event.preventDefault();
         const searchTerm = $("#search-term").val();
         newSearch(searchTerm);
+        $('#search-term').val("");
     })
+    
 }
+
+// function getArticleText(url){
+//     let articleURL = (`https://aylien-text.p.rapidapi.com/extract?url=${url}`, {
+// 	"method": "GET",
+// 	"headers": {
+// 		"x-rapidapi-host": "aylien-text.p.rapidapi.com",
+// 		"x-rapidapi-key": "52e44ec90fmshee9b74a5af92288p13d064jsn25fd189257ac"
+// 	}
+//     })
+
+//     fetchData(articleURL).then(data => console.log("article"));
+// }
 
 
 // ------------------------------------------
 //  EVENT LISTENERS
 // ------------------------------------------
-// $(document).on("click", "#texttospeech", function(e) {
-//   alert("It worked!");
-// });
-$(document).on("click", '#text-to-speech', function(e) {
-    const url = $(this).closest('li').find('a');
-    let textToSpeechURL = url[0].href;
-    console.log(textToSpeechURL);
-  });
+// $(document).on("click", '#text-to-speech', function(e) {
+//     const url = $(this).closest('li').find('a');
+//     let textToSpeechURL = url[0].href;
+//     console.log(textToSpeechURL);
+//   });
   
 
 $(formSearch);

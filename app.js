@@ -8,7 +8,7 @@ function fetchData(url) {
   return fetch(url)
     .then(checkStatus)
     .then(res => res.json())
-    .catch(error => console.log("Looks like there was a problem!", error));
+    .catch(error => alert("Looks like there was a problem!", error));
 }
 
 fetchData(

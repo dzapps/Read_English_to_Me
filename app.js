@@ -38,11 +38,13 @@ function generateResults(data) {
             <p><span>${data[i].source.name}</span></p>
             <p>${data[i].description}</p>
             <p id='${newId}' hidden="true">${content}</p>
-        <div>
+        <div class="controls">
            <button class="read-to-me" onclick="responsiveVoice.speak(document.getElementById('${newId}').textContent);" 
             type="button">Read English to Me!</button>
             <button class="read-to-me" onclick="responsiveVoice.pause();" 
             type="button">Pause</button>
+            <button class="read-to-me" onclick="responsiveVoice.resume();" 
+            type="button">Resume</button>
         </div>
       </section>`
     );

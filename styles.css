@@ -134,9 +134,16 @@ header {
   color: #725ac1;
 }
 
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .read-to-me {
   height: auto;
   width: auto;
+  margin: 5px;
   padding: 10px;
   font-size: 1em;
   text-align: center;

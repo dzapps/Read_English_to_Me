@@ -24,6 +24,12 @@ a:hover {
 
 /* Section Styles */
 
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .form {
   width: 100%;
   background: #242038;
@@ -47,6 +53,7 @@ a:hover {
 
 .top .name {
   display: block;
+  margin: 15px;
   margin-right: auto;
   color: #cac4ce;
 }
@@ -54,13 +61,33 @@ a:hover {
 .search-field {
   height: 30px;
   padding: 10px;
+  width: 250px;
   border: none;
   border-radius: 6px;
   outline: none;
 }
 
+.search-btn {
+  height: 35px;
+  width: 70px;
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+  color: #242038;
+  background: #cac4ce;
+  border: none;
+  border-radius: 6px;
+  outline: none;
+}
+
+.search-btn:hover {
+  color: #cac4ce;
+  background: #163A5F;
+  cursor: pointer;
+}
+
 header {
-  padding-top: 60px;
+  padding-top: 110px;
   line-height: 1.5;
   width: 100%;
   text-align: center;
@@ -83,6 +110,12 @@ header {
   border-color: #8d86c9;
 }
 
+.card img { 
+  float: left; 
+  padding: 0 20px 20px 20px;
+  width: 100%;
+}
+
 .card-title {
   margin-top: 15px;
   padding: 10px 20px 20px;
@@ -102,21 +135,72 @@ header {
 }
 
 .read-to-me {
-  border-radius: 6px;
-  display: inline-block;
+  height: auto;
+  width: auto;
+  padding: 10px;
+  font-size: 1em;
+  text-align: center;
+  color: #cac4ce;
   background: #163A5F;
-  color: white;
-  padding: 5px 10px;
-  margin: 2px;
+  border: none;
+  border-radius: 6px;
+  outline: none;
 }
 
-.card img { 
-  float: left; 
-  padding: 0 20px 20px 20px;
+.read-to-me:hover {
+  color: #242038;
+  background: #cac4ce;
+  cursor: pointer;
+}
+
+ footer {
   width: 100%;
- }
+  min-height: 30px;
+  padding: 20px 0 40px 20px;
+}
 
+footer .copyright {
+  top: -8px;
+  margin-right: 20px;
+  font-size: .75em;
+}
 
+footer ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+footer ul li {
+  display: inline-block;
+}
+
+a.social {
+  display: inline-block;
+  text-indent: -9999px;
+  margin-left: 5px;
+  width: 30px;
+  height: 30px;
+  background-size: 30px 30px;
+  opacity: .5;
+  transition: all .25s;
+}
+a.twitter {
+  background-image: url(images/twitter.svg);
+}
+a.linkedin {
+  background-image: url(images/linkedin.svg);
+}
+a.github {
+  background-image: url(images/github.svg);
+}
+a.social:hover {
+  opacity: 1;
+  transform: scale(1.25);
+}
+.clearfix {
+  clear: both;
+}
 
 
 

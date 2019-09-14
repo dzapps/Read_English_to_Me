@@ -6,25 +6,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="styles.css" rel="stylesheet" type="text/css"/>
+    <link href="styles.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-    <div class="form">
-        <form id="article-search">
-            <label for="search-term">Topic:</label>
+    <nav class="form">
+        <ul class="top">
+            <li class="name">Read English to Me</li>
+            <li>
+                <form id="article-search">
+                    <input class="search-field" type="text" name="search-term" id="search-term" aria-placeholder="Technology"
+                placeholder="Search for topics, locations & sources">
 
-            <input type="text" name="search-term" id="search-term" aria-placeholder="Technology" placeholder="Technology">
-
-            <input type="submit" value="Search">
-        </form>
-    </div>
-    <section class="top-headlines">
-        <h2>Top Headlines</h2>
-        <ul id="top-headlines">
-
+                    <button class="search-btn" type="submit">Search</button>
+                </form>
+            </li>
         </ul>
-    </section>
+    </nav>
+    <header class="top-headlines">
+        <h1>Top Headlines</h1>
+    </header>
+    <main class="flex" id="top-headlines">
+
+    </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="app.js"></script>

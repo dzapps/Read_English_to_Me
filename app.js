@@ -1,7 +1,7 @@
 const NEWSAPIKEY = "6d3bf7bff5324831a84530cf4ea8f757";
 const SEARCHURL = "https://newsapi.org/v2/everything";
 
-// ------------------------------------------
+//
 //  FETCH FUNCTIONS
 // ------------------------------------------
 function fetchData(url) {
